@@ -7,7 +7,7 @@
 
 # Site settings
 title: 娄凯强的博客
-brief-intro: Android and Python Coder
+brief-intro: a normal bachelor
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://fireworks999.github.io/" # the base hostname & protocol for your site
 
@@ -16,11 +16,11 @@ permalink: /:year/:month/:day/:title/
 # other links
 twitter_username: #gaohaoyang126
 facebook_username: #gaohaoyang.water
-github_username:  643435675
+github_username:  FIREWORKS999
 email: 2545428914@QQ.com
-weibo_username: 3115521wh
-zhihu_username: hll643435675
-linkedIn_username: gaohaoyang
+weibo_username: 娄凯强1221
+zhihu_username: 沙漠之鹰
+linkedIn_username: 
 dribbble_username:
 
 description_footer: 来自娄凯强的技术支持！
