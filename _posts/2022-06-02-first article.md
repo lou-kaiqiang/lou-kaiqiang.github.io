@@ -1,4 +1,14 @@
-categories:心灵感知
+---
+
+layout: post 
+
+title:  "Welcome to Jekyll!" 
+
+date:   2022-06-08 
+
+categories: jekyll update 
+
+---
 
 #001开启心灵感知之旅
 
