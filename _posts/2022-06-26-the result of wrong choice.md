@@ -2,7 +2,7 @@
 
 layout: post
 title:  "关于选择之后的懊悔与思考"
-date:   2022-06-12 08：43
+date:   2022-06-26 23：00
 categories: 写作记录
 tags: 写作记录日常 
 author: Kaiqiang Lou
@@ -14,8 +14,6 @@ mathjax: true
 
 * content
 {:toc}
-
-
 记录一下这一周发生的事儿
 
 
