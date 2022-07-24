@@ -1,14 +1,12 @@
-```
+---
 layout: post
 title:  "自我认识的加深"
 date:   2022-07-20 09：00
 categories: 写作记录
-tags: 写作记录日常 
+tags: 写作记录日常
 author: Kaiqiang Lou
 mathjax: true
-
-
-```
+---
 
 
 
