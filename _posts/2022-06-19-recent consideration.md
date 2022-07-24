@@ -1,4 +1,3 @@
-```
 layout: post
 title:  "与定投人生课堂的别离"
 date:   2022-06-19 22：22
@@ -6,7 +5,6 @@ categories: 写作记录
 tags: 写作记录日常 
 author: Kaiqiang Lou
 mathjax: true
-```
 
 
 
