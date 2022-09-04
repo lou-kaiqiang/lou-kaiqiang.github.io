@@ -12,8 +12,8 @@ mathjax: true
 {:toc}
 
 
-* content
-{:toc}
+
+
 
 
 # 考研进程
