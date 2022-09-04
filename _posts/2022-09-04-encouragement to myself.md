@@ -1,3 +1,17 @@
+---
+layout: post
+title:  "自我认识的加深"
+date:   2022-09-04 22：00
+categories: 写作记录
+tags: 写作记录日常 
+author: Kaiqiang Lou
+mathjax: true
+---
+
+* content
+{:toc}
+
+
 # 考研进程记录
 
 截止今日，进度如下：
