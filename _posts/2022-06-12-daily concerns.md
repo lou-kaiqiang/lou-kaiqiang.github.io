@@ -4,7 +4,7 @@ title:  "随笔"
 date:   2022-06-12 08：43
 categories: 写作记录
 tags: 写作记录日常 
-author: Kaiqiang Kaiqiang Lou
+author: Kaiqiang Lou
 mathjax: true
 ---
 
