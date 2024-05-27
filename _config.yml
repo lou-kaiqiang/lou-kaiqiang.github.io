@@ -18,8 +18,8 @@ twitter_username: #凯强同学
 facebook_username: #gaohaoyang.water
 github_username:  lou-kaiqiang
 email: 2545428914@qq.com
-weibo_username:娄凯强
-zhihu_username:凯强同学
+weibo_username:娄凯强1221
+zhihu_username:kqlou
 linkedIn_username: 
 dribbble_username:
 
@@ -29,13 +29,13 @@ description_footer: 来自娄凯强的技术支持！
 # two ways to comment, only choose one, and use your own short name
 # 两种评论插件，选一个就好了，使用自己的 short_name
 duoshuo_shortname: #loukaiqiang
-disqus_shortname: #loukaiqiang
+disqus_shortname:kqlou
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
 # hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
 # xxxxx字符串
-baidu_tongji_id: 552aa8d99c04e57a157ba015b317ce20
+baidu_tongji_id: f9759207e6c0457659bced9864b604ee
 google_analytics_id: UA-72449510-4 # google 分析追踪id
 
 # Build settings
