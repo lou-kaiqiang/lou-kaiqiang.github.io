@@ -1,4 +1,4 @@
-# 不劳而获的收益最可怕
+
 
 ```
 layout: post
@@ -12,23 +12,17 @@ mathjax: true
 
 分享关于**亿纬转债**的一点儿看法。
 
-
-
-
-
 今天一开盘， 之前我一直关注的 **亿纬转债** 暴跌到了134，跌幅为20%，昨天的收盘价还是167.580，
 
-
-
-![价格](/assets/2026-03-31-Unearned gains are the most terrifying/images/clipboard-1774941530231-mm7w-1774941530290-woyw.png)
+!\[价格]\(/assets/2026-03-31-Unearned gains are the most terrifying/images/plate.png)
 
 官方给出的说明是这样的：
 
-![官方公告1](/assets/2026-03-31-Unearned gains are the most terrifying/images/image_announcement-1774927959165-wdqj.png)
+!\[价格]\(/assets/2026-03-31-Unearned gains are the most terrifying/images/announcement.png)
 
 ---
 
-![强制赎回价格](/assets/2026-03-31-Unearned gains are the most terrifying/images/image_1-price-1774927968231-zyjp.png)
+!\[价格]\(/assets/2026-03-31-Unearned gains are the most terrifying/images/price.png)
 
 一般来说，可转债的成本价是100元/张，一个人最多申领10张。意味着昨天（2026年3月30日）卖出，自己的收益就是1675-1000=675元，而不幸地是，上面的官方说明也是今天（2026年3月31日）给出的，所以很有可能大部分人是从昨天拿到了今天，自己的收益就是1340-1000=340元。
 
