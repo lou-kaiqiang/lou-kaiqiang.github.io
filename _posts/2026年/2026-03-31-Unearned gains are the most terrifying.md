@@ -20,15 +20,15 @@ mathjax: true
 
 
 
-![](./assets/images/clipboard-1774941530231-mm7w-1774941530290-woyw.png)
+![](/assets/2026-03-31-Unearned gains are the most terrifying/images/clipboard-1774941530231-mm7w-1774941530290-woyw.png)
 
 官方给出的说明是这样的：
 
-![image.png](./assets/images/image_announcement-1774927959165-wdqj.png)
+![image1.png](/assets/images/image_announcement-1774927959165-wdqj.png)
 
 ---
 
-![image.png](./assets/images/image_1-price-1774927968231-zyjp.png)
+![image2.png](/assets/images/image_1-price-1774927968231-zyjp.png)
 
 一般来说，可转债的成本价是100元/张，一个人最多申领10张。意味着昨天（2026年3月30日）卖出，自己的收益就是1675-1000=675元，而不幸地是，上面的官方说明也是今天（2026年3月31日）给出的，所以很有可能大部分人是从昨天拿到了今天，自己的收益就是1340-1000=340元。
 
