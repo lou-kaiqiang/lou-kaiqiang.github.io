@@ -11,15 +11,15 @@
 | 日期 | 标题 |
 |------|------|
 | 2022-09-25 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/09/25/Signs/) |
-| 2022-09-04 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/09/04/encouragement to myself/) |
-| 2022-08-28 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/08/28/weekly recording/) |
-| 2022-08-21 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/08/21/the recordings of this week/) |
-| 2022-08-01 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/08/01/the trip of going hometown/) |
-| 2022-07-20 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/07/20/deeper recognization/) |
-| 2022-07-11 | [建立刚需的必要性](https://lou-kaiqiang.github.io/2022/07/11/the Necessity of Establishing Just Need/) |
-| 2022-06-26 | [第四届韭菜节直播领会](https://lou-kaiqiang.github.io/2022/06/26/record of xiaolai's video/) |
-| 2022-06-26 | [关于选择之后的懊悔与思考](https://lou-kaiqiang.github.io/2022/06/26/the result of wrong choice/) |
-| 2022-06-19 | [与定投人生课堂的别离](https://lou-kaiqiang.github.io/2022/06/19/recent consideration/) |
+| 2022-09-04 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/09/04/encouragement_to_myself/) |
+| 2022-08-28 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/08/28/weekly_recording/) |
+| 2022-08-21 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/08/21/the_recordings_of_this_week/) |
+| 2022-08-01 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/08/01/the_trip_of_going_hometown/) |
+| 2022-07-20 | [自我认识的加深](https://lou-kaiqiang.github.io/2022/07/20/deeper_recognization/) |
+| 2022-07-11 | [建立刚需的必要性](https://lou-kaiqiang.github.io/2022/07/11/the_Necessity_of_Establishing_Just_Need/) |
+| 2022-06-26 | [第四届韭菜节直播领会](https://lou-kaiqiang.github.io/2022/06/26/record_of_xiaolai's_video/) |
+| 2022-06-26 | [关于选择之后的懊悔与思考](https://lou-kaiqiang.github.io/2022/06/26/the_result_of_wrong_choice/) |
+| 2022-06-19 | [与定投人生课堂的别离](https://lou-kaiqiang.github.io/2022/06/19/recent_consideration/) |
 | 2022-06-12 | [随笔](https://lou-kaiqiang.github.io/2022/06/12/担忧/) |
 | 2022-06-12 | [随笔](https://lou-kaiqiang.github.io/2022/06/12/daily_concerns/) |
 | 2022-06-02 | [开启心灵感知之旅](https://lou-kaiqiang.github.io/2022/06/02/first_article/) |
