@@ -1,11 +1,5 @@
 # 📚 博客文章目录
 
-## jekyll
-
-| 日期 | 标题 |
-|------|------|
-| 2022-06-02 | [对这个 jekyll 博客主题的改版和重构](https://lou-kaiqiang.github.io/2022/06/02/first article/) |
-
 ## tools
 
 | 日期 | 标题 |
@@ -27,7 +21,8 @@
 | 2022-06-26 | [关于选择之后的懊悔与思考](https://lou-kaiqiang.github.io/2022/06/26/the result of wrong choice/) |
 | 2022-06-19 | [与定投人生课堂的别离](https://lou-kaiqiang.github.io/2022/06/19/recent consideration/) |
 | 2022-06-12 | [随笔](https://lou-kaiqiang.github.io/2022/06/12/担忧/) |
-| 2022-06-12 | [随笔](https://lou-kaiqiang.github.io/2022/06/12/daily concerns/) |
+| 2022-06-12 | [随笔](https://lou-kaiqiang.github.io/2022/06/12/daily_concerns/) |
+| 2022-06-02 | [开启心灵感知之旅](https://lou-kaiqiang.github.io/2022/06/02/first_article/) |
 
 ## 定投改变命运
 
