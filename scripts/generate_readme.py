@@ -2,10 +2,48 @@ import os
 import re
 from collections import defaultdict
 from pathlib import Path
+from urllib.parse import quote
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 POSTS_DIR = REPO_ROOT / "_posts"
 README_FILE = REPO_ROOT / "README.md"
+SITE_URL = "https://lou-kaiqiang.github.io"
+
+FRONT_MATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.S)
+
+def read_front_matter(content):
+    match = FRONT_MATTER_RE.match(content)
+    if match:
+        lines = match.group(1).splitlines()
+    else:
+        lines = []
+        for line in content.splitlines():
+            if not line.strip():
+                break
+            lines.append(line)
+
+    data = {}
+    for line in lines:
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        data[key.strip()] = value.strip().strip("\"'")
+    return data
+
+def slugify(value):
+    value = value.strip()
+    value = re.sub(r"[^\w\u4e00-\u9fff+.'-]+", "-", value, flags=re.UNICODE)
+    return value.strip("-")
+
+def post_date(front_matter, fallback_date):
+    date = front_matter.get("date", "")
+    match = re.search(r"\d{4}-\d{2}-\d{2}", date)
+    return match.group(0) if match else fallback_date
+
+def post_url(date, slug):
+    path = f"/{date.replace('-', '/')}/{slugify(slug)}/"
+    encoded_path = quote(path, safe="/+.'-")
+    return f"{SITE_URL}{encoded_path}"
 
 def parse_post(filename, filepath):
     match = re.match(r"(\d{4}-\d{2}-\d{2})-(.+)\.md", filename)
@@ -19,16 +57,16 @@ def parse_post(filename, filepath):
 
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
+        front_matter = read_front_matter(content)
 
-        t = re.search(r"title:\s*\"?(.*?)\"?\n", content)
-        if t:
-            title = t.group(1)
+        if front_matter.get("title"):
+            title = front_matter["title"]
 
-        c = re.search(r"categories:\s*\[?(.*?)\]?\n", content)
-        if c:
-            category = c.group(1).strip()
+        if front_matter.get("categories"):
+            category = front_matter["categories"].strip("[]").strip()
 
-    url = f"https://lou-kaiqiang.github.io/{date.replace('-', '/')}/{slug}/"
+    date = post_date(front_matter, date)
+    url = post_url(date, slug)
 
     return date, title, category, url
 
