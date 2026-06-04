@@ -1,9 +1,11 @@
 import os
 import re
 from collections import defaultdict
+from pathlib import Path
 
-POSTS_DIR = "_posts"
-README_FILE = "README.md"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+POSTS_DIR = REPO_ROOT / "_posts"
+README_FILE = REPO_ROOT / "README.md"
 
 def parse_post(filename, filepath):
     match = re.match(r"(\d{4}-\d{2}-\d{2})-(.+)\.md", filename)
@@ -11,6 +13,7 @@ def parse_post(filename, filepath):
         return None
 
     date, slug = match.groups()
+    slug = slug.strip()
     title = slug.replace("-", " ")
     category = "未分类"
 
@@ -35,7 +38,7 @@ def main():
     for root, _, files in os.walk(POSTS_DIR):
         for f in files:
             if f.endswith(".md"):
-                filepath = os.path.join(root, f)
+                filepath = Path(root) / f
                 parsed = parse_post(f, filepath)
                 if parsed:
                     date, title, category, url = parsed

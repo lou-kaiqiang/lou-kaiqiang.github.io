@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "_posts/**"
+      - "scripts/generate_readme.py"
   workflow_dispatch:
 
 permissions:
