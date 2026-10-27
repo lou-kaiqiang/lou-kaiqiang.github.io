@@ -40,6 +40,29 @@
 }())
 
 (function() {
+  var articleImages = document.querySelectorAll('.article-page .post-body img')
+  for (var i = 0; i < articleImages.length; i++) {
+    if (!articleImages[i].hasAttribute('decoding')) articleImages[i].setAttribute('decoding', 'async')
+    if (i > 0 && !articleImages[i].hasAttribute('loading')) articleImages[i].setAttribute('loading', 'lazy')
+  }
+}())
+
+(function() {
+  var progressBar = document.querySelector('.reading-progress-bar')
+  if (!progressBar) return
+
+  function updateProgress() {
+    var scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
+    var progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0
+    progressBar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, progress)) + ')'
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true })
+  window.addEventListener('resize', updateProgress)
+  updateProgress()
+}())
+
+(function() {
   var backToTop = document.querySelector('.back-to-top')
   if (!backToTop) return
 

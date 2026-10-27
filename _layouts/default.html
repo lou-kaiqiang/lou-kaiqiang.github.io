@@ -3,7 +3,7 @@
 
   {% include head.html %}
 
-  <body>
+  <body{% if page.layout == 'post' %} class="article-page"{% endif %}>
     <a class="skip-link" href="#main-content">跳转到主要内容</a>
     {% include header.html %}
 

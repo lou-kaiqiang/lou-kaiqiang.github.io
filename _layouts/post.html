@@ -2,40 +2,25 @@
 layout: default
 ---
 
+<div class="reading-progress" aria-hidden="true"><span class="reading-progress-bar"></span></div>
 <div class="page" post>
     <div class="left">
         <article itemscope itemtype="http://schema.org/BlogPosting">
             <header class="post-header">
+                {% if page.categories %}
+                <div class="post-category" aria-label="文章分类">{% include category.html %}</div>
+                {% endif %}
                 <h1 itemprop="headline">{{ page.title }}</h1>
-                <div class="label" aria-label="文章信息">
-                    <div class="label-card">
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%F" }}</time>
-                    </div>
-                    {% if page.author %}
-                    <div class="label-card">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <span itemprop="author">{{ page.author }}</span>
-                    </div>
-                    {% endif %}
-                    <div class="label-card" aria-label="阅读量">
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                        <span id="busuanzi_value_page_pv">—</span> 次阅读
-                    </div>
-                    {% if page.meta %}
-                    <div class="label-card">
-                        <i class="fa fa-key" aria-hidden="true"></i>{{ page.meta }}
-                    </div>
-                    {% endif %}
-                    <div class="label-card">{% include category.html %}</div>
-                    <div class="label-card">{% include tag.html %}</div>
-                </div>
+                <p class="post-meta">
+                    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y年%m月%d日" }}</time>
+                    {% if page.author %}<span itemprop="author">{{ page.author }}</span>{% endif %}
+                    {% if page.reading_time %}<span>{{ page.reading_time }}</span>{% elsif page.read_time %}<span>{{ page.read_time }}</span>{% endif %}
+                </p>
             </header>
             <div class="post-body" itemprop="articleBody">
                 {{ content }}
             </div>
         </article>
-        <hr>
 
         {% assign hasSimilar = '' %}
         {% for post in site.related_posts %}
