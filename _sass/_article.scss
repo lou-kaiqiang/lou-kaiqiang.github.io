@@ -1,0 +1,115 @@
+body.article-page,
+.page[post] {
+    --article-page-bg: #f7f8fa;
+    --article-surface: #ffffff;
+    --article-text: #303846;
+    --article-heading: #18212b;
+    --article-muted: #737d8c;
+    --article-border: #e5e7eb;
+    --article-quote-border: #cbd2dc;
+    --article-link: #3f5f9d;
+    color: var(--article-text);
+    background: var(--article-page-bg);
+
+    .page[post] {
+        grid-template-columns: minmax(0, 1fr) minmax(190px, 220px);
+        gap: $space-7;
+        width: $content-width;
+        max-width: calc(100% - #{$space-7});
+        margin-bottom: $space-8;
+
+        > .left {
+            padding: $space-8 clamp(24px, 5vw, 72px);
+            background: var(--article-surface);
+            border: 1px solid var(--article-border);
+            box-shadow: none;
+        }
+
+        > .right {
+            .side {
+                background: transparent;
+                border-left: 1px solid var(--article-border);
+                border-radius: 0;
+                box-shadow: none;
+
+                > div:first-child {
+                    padding-left: $space-4;
+                    border-bottom: 0;
+                    color: var(--article-muted);
+                    font-size: 13px;
+                    letter-spacing: 0.04em;
+                    text-transform: uppercase;
+                }
+            }
+
+            .content-ul {
+                padding: 0 0 0 $space-4;
+                list-style: none;
+                font-size: 14px;
+
+                li {
+                    padding: $space-1 0;
+                }
+            }
+        }
+    }
+}
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1100;
+    height: 3px;
+    pointer-events: none;
+}
+
+.reading-progress-bar {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--article-link, #3f5f9d);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 120ms linear;
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+    body.article-page {
+        .page[post] {
+            display: block;
+            width: 100%;
+            max-width: none;
+            margin-bottom: $space-6;
+
+            > .left {
+                padding: $space-8 $space-5;
+                border: 0;
+            }
+
+            > .right {
+                .side {
+                    background: var(--article-surface);
+                    border: 1px solid var(--article-border);
+                    border-radius: $radius;
+                    box-shadow: $shadow-card;
+
+                    > div:first-child {
+                        padding-left: $space-4;
+                    }
+                }
+
+                .content-ul {
+                    padding: $space-3 $space-4 $space-3 $space-7;
+                }
+            }
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reading-progress-bar {
+        transition: none;
+    }
+}

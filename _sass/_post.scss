@@ -4,33 +4,77 @@ html.js-toc #markdown-toc {
 
 .page[post] {
     .left {
-        .label {
-            display: flex;
-            flex-wrap: wrap;
-            gap: $space-2 $space-4;
-            margin: $space-4 0 $space-5;
+        .post-header {
+            max-width: $article-measure;
+            margin: 0 auto $space-7;
+        }
 
-            .label-card {
-                color: $muted-text;
+        .post-category {
+            margin-bottom: $space-3;
+            color: var(--article-link);
+            font-size: 14px;
+            font-weight: 600;
+
+            .categories {
+                display: inline-flex;
+                align-items: center;
+                gap: $space-1;
+                margin: 0;
 
                 i {
-                    margin-right: $space-1;
-                    color: $subtle-text;
+                    display: none;
                 }
+
+                a {
+                    padding: 0;
+                    color: var(--article-link);
+                    background: transparent;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $link-hover;
+                        background: transparent;
+                    }
+                }
+            }
+        }
+
+        .post-header h1 {
+            margin: 0 0 $space-4;
+            color: var(--article-heading);
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+
+        .post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: $space-2 0;
+            margin: 0;
+            color: var(--article-muted);
+            font-size: 14px;
+            line-height: 1.6;
+
+            > * {
+                display: inline-flex;
+                align-items: center;
+            }
+
+            > * + *::before {
+                margin: 0 $space-2;
+                color: $border-strong;
+                content: "·";
             }
         }
 
         > article {
             max-width: $article-measure;
-            font-size: 16px;
-
-            .post-header h1 {
-                margin-bottom: $space-2;
-            }
-
-            > :first-child {
-                margin-top: 0;
-            }
+            margin: 0 auto;
+            color: var(--article-text);
+            font-size: 18px;
+            line-height: 1.8;
 
             h2,
             h3,
@@ -38,16 +82,123 @@ html.js-toc #markdown-toc {
             h5,
             h6 {
                 scroll-margin-top: $space-6;
+                color: var(--article-heading);
+                border: 0;
+            }
+
+            .post-body {
+                overflow-wrap: anywhere;
+                word-break: normal;
+
+                p {
+                    margin: 0 0 $space-6;
+                }
+
+                h2 {
+                    margin: $space-8 0 $space-4;
+                    padding: 0;
+                    font-size: 26px;
+                    font-weight: 600;
+                }
+
+                h3 {
+                    margin: $space-7 0 $space-3;
+                    font-size: 21px;
+                    font-weight: 600;
+                }
+
+                h4,
+                h5,
+                h6 {
+                    margin: $space-6 0 $space-3;
+                }
+
+                ul,
+                ol {
+                    margin: 0 0 $space-6;
+                    padding-left: $space-7;
+                }
+
+                li {
+                    margin-bottom: $space-2;
+                }
+
+                blockquote {
+                    margin: $space-6 0;
+                    padding: $space-4 $space-5;
+                    color: var(--article-muted);
+                    background: var(--article-page-bg);
+                    border-left: 3px solid var(--article-quote-border);
+                }
+
+                a {
+                    text-decoration: underline;
+                    text-decoration-thickness: 1px;
+                    text-underline-offset: 3px;
+
+                    &:hover,
+                    &:focus-visible {
+                        background: transparent;
+                    }
+                }
+
+                img {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                    margin: $space-7 auto;
+                    border-radius: 8px;
+                }
+
+                figure {
+                    margin: $space-7 0;
+
+                    img {
+                        margin: 0 auto;
+                    }
+                }
+
+                figcaption {
+                    margin-top: $space-2;
+                    color: var(--article-muted);
+                    font-size: 14px;
+                    text-align: center;
+                }
+
+                table {
+                    display: block;
+                    max-width: 100%;
+                    margin: $space-6 0;
+                    overflow-x: auto;
+                    white-space: nowrap;
+                }
+
+                pre {
+                    max-width: 100%;
+                    margin: $space-6 0;
+                    overflow-x: auto;
+                    white-space: pre;
+                }
+
+                code {
+                    overflow-wrap: normal;
+                }
             }
         }
+    }
 
-        a {
-            color: $link-color;
+    .left > hr {
+        display: none;
+    }
 
-            &:hover {
-                color: $link-hover;
-                background: #edf1f8;
-            }
+    .left > section[aria-labelledby="similar_posts"],
+    .left > section[aria-labelledby="comments"] {
+        max-width: $article-measure;
+        margin: $space-8 auto 0;
+
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
         }
     }
 
@@ -58,8 +209,12 @@ html.js-toc #markdown-toc {
     .post-recent {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: $space-4;
-        margin: $space-6 0;
+        gap: $space-6;
+        max-width: $article-measure;
+        margin: $space-8 auto 0;
+        padding: $space-6 0;
+        border-top: 1px solid #e5e7eb;
+        border-bottom: 1px solid #e5e7eb;
 
         .pre,
         .nex {
@@ -72,44 +227,53 @@ html.js-toc #markdown-toc {
 
         a {
             display: block;
-            min-height: 76px;
-            padding: $space-4;
-            color: $link-hover;
-            background: $surface-strong;
-            border: 1px solid $border-color;
-            border-radius: $radius;
-            box-shadow: 0 1px 3px rgba(35, 48, 64, 0.08);
+            min-height: 0;
+            padding: $space-2 0;
+            color: var(--article-text);
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
             text-decoration: none;
 
-            &:hover {
-                background: #edf1f8;
-                border-color: $link-color;
+            &:hover,
+            &:focus-visible {
+                color: $link-hover;
+                background: transparent;
             }
         }
 
         strong {
             display: block;
             margin-bottom: $space-2;
-            color: $muted-text;
+            color: var(--article-muted);
             font-size: 13px;
             font-weight: 600;
         }
 
-        p {
-            margin: 0;
+        span {
+            display: block;
+            overflow-wrap: anywhere;
         }
     }
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
     .page[post] {
-        .left > article {
-            font-size: 16px;
-            line-height: 1.8;
+        .left {
+            .post-header h1 {
+                font-size: 28px;
+            }
+
+            > article {
+                font-size: 17px;
+                line-height: 1.8;
+            }
         }
 
         .post-recent {
             grid-template-columns: 1fr;
+            gap: $space-3;
 
             .nex {
                 text-align: left;
