@@ -1,4 +1,4 @@
-header {
+body > header#top {
     position: relative;
     z-index: 100;
     min-height: 52px;
@@ -77,7 +77,7 @@ header {
 }
 
 @media screen and (max-width: $wide-breakpoint) and (min-width: $mobile-breakpoint) {
-    header {
+    body > header#top {
         min-height: 50px;
 
         .wrapper {
@@ -103,7 +103,7 @@ header {
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
-    header {
+    body > header#top {
         min-height: 48px;
         margin-bottom: $space-4;
 
@@ -191,7 +191,7 @@ header {
         }
     }
 
-    html:not(.js) header .wrapper nav {
+    html:not(.js) body > header#top .wrapper nav {
         visibility: visible;
         opacity: 1;
         transform: none;
