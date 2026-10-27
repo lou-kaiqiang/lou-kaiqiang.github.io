@@ -18,8 +18,22 @@ layout: default
                         <div class="label-card"><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%F" }}</time></div>
                         {% if post.author %}<div class="label-card"><i class="fa fa-user" aria-hidden="true"></i>{{ post.author }}</div>{% endif %}
                         {% if post.meta %}<div class="label-card"><i class="fa fa-key" aria-hidden="true"></i>{{ post.meta }}</div>{% endif %}
-                        <div class="label-card">{% include category.html %}</div>
-                        <div class="label-card">{% include tag.html %}</div>
+                        {% assign shown_categories = '' %}
+                        {% for category in post.categories %}
+                            {% assign category_marker = '|' | append: category | append: '|' %}
+                            {% unless shown_categories contains category_marker %}
+                                <div class="label-card"><i class="fa fa-th-list" aria-hidden="true"></i><a href="{{ site.baseurl }}/{{ site.category_dir }}#{{ category }}" title="分类：{{ category }}" rel="category">{{ category }}</a></div>
+                                {% assign shown_categories = shown_categories | append: category_marker %}
+                            {% endunless %}
+                        {% endfor %}
+                        {% assign shown_tags = '' %}
+                        {% for tag in post.tags %}
+                            {% assign tag_marker = '|' | append: tag | append: '|' %}
+                            {% unless post.categories contains tag or shown_tags contains tag_marker %}
+                                <div class="label-card"><i class="fa fa-tags" aria-hidden="true"></i><a href="{{ site.baseurl }}/{{ site.tag_dir }}#{{ tag }}" title="标签：{{ tag }}" rel="tag">{{ tag }}</a></div>
+                                {% assign shown_tags = shown_tags | append: tag_marker %}
+                            {% endunless %}
+                        {% endfor %}
                     </div>
                     <div class="excerpt">{{ post.excerpt }}</div>
                     <div class="read-all"><a href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> 阅读全文<span class="visually-hidden">：{{ post.title }}</span></a></div>
