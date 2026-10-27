@@ -2,38 +2,38 @@
 layout: default
 ---
 
-<div class="page clearfix" post>
+<div class="page" post>
     <div class="left">
-        <h1>{{page.title}}</h1>
-        <div class="label">
-
-            <div class="label-card">
-                <i class="fa fa-calendar"></i>{{ page.date | date: "%F" }}
-            </div>
-
-            <div class="label-card">
-                {% if page.author %}<i class="fa fa-user"></i>{{ page.author }}
-                {% endif %}
-            </div>
-            <div class="label-card">
-                <p><i class="fa fa-eye fa-x"></i><span id="busuanzi_value_page_pv"></span></p>
-            </div>
-            <div class="label-card">
-                {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
-            </div>
-
-            <div class="label-card">
-            {% include category.html %}
-            </div>
-
-            <div class="label-card">
-            {% include tag.html %}
-            </div>
-
-        </div>
-        <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
-        {{content}}
+            <header class="post-header">
+                <h1 itemprop="headline">{{ page.title }}</h1>
+                <div class="label" aria-label="文章信息">
+                    <div class="label-card">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%F" }}</time>
+                    </div>
+                    {% if page.author %}
+                    <div class="label-card">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span itemprop="author">{{ page.author }}</span>
+                    </div>
+                    {% endif %}
+                    <div class="label-card" aria-label="阅读量">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <span id="busuanzi_value_page_pv">—</span> 次阅读
+                    </div>
+                    {% if page.meta %}
+                    <div class="label-card">
+                        <i class="fa fa-key" aria-hidden="true"></i>{{ page.meta }}
+                    </div>
+                    {% endif %}
+                    <div class="label-card">{% include category.html %}</div>
+                    <div class="label-card">{% include tag.html %}</div>
+                </div>
+            </header>
+            <div class="post-body" itemprop="articleBody">
+                {{ content }}
+            </div>
         </article>
         <hr>
 
@@ -44,16 +44,13 @@ layout: default
                 {% for thisTag in page.tags %}
                     {% if postHasSimilar == false and hasSimilar.size < 6 and post != page and tag == thisTag %}
                         {% if hasSimilar.size == 0 %}
-                        <h2 id="similar_posts">Similar Posts</h2>
-                        <ul>
+                        <section aria-labelledby="similar_posts">
+                            <h2 id="similar_posts">相关文章</h2>
+                            <ul>
                         {% endif %}
-                        <li class="relatedPost">
-                            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}
-                            {% if post.series %}
-                                (Series: {{ post.series }})
-                            {% endif %}
-                            </a>
-                        </li>
+                                <li class="relatedPost">
+                                    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{% if post.series %}（系列：{{ post.series }}）{% endif %}</a>
+                                </li>
                         {% capture hasSimilar %}{{ hasSimilar }}*{% endcapture %}
                         {% assign postHasSimilar = true %}
                     {% endif %}
@@ -61,46 +58,42 @@ layout: default
             {% endfor %}
         {% endfor %}
         {% if hasSimilar.size > 0 %}
-            </ul>
+                            </ul>
+                        </section>
         {% endif %}
 
         {% include previousAndNext.html %}
 
-        <h2 id="comments">Comments</h2>
-        {% include comments.html %}
-
-
+        <section aria-labelledby="comments">
+            <h2 id="comments">评论</h2>
+            {% include comments.html %}
+        </section>
     </div>
-    <button class="anchor"><i class="fa fa-anchor"></i></button>
-    <div class="right">
-        <div class="wrap">
 
-            <!-- Content -->
+    <button class="anchor" type="button" aria-controls="content-panel" aria-expanded="false" aria-label="打开文章目录">
+        <i class="fa fa-list" aria-hidden="true"></i><span class="visually-hidden">目录</span>
+    </button>
+    <aside id="content-panel" class="right" aria-label="文章目录">
+        <div class="wrap">
             <div class="side content">
-                <div>
-                    Content
-                </div>
+                <div><i class="fa fa-th-list" aria-hidden="true"></i> 目录</div>
                 <ul id="content-side" class="content-ul">
-                    {% if hasSimilar.size > 0 %}
-                    <li><a href="#similar_posts">Similar Posts</a></li>
-                    {% endif %}
-                    <li><a href="#comments">Comments</a></li>
+                    {% if hasSimilar.size > 0 %}<li><a href="#similar_posts">相关文章</a></li>{% endif %}
+                    <li><a href="#comments">评论</a></li>
                 </ul>
             </div>
-            <!-- 其他div框放到这里 -->
-            <!-- <div class="side">bbbb</div> -->
         </div>
-    </div>
+    </aside>
 </div>
 <script>
-/**
- * target _blank
- */
 (function() {
-    var aTags = document.querySelectorAll('article a:not([id])')
-    for (var i = 0; i < aTags.length; i++) {
-        aTags[i].setAttribute('target', '_blank')
+    var explicitExternalLinks = document.querySelectorAll('article a[target="_blank"]')
+    for (var i = 0; i < explicitExternalLinks.length; i++) {
+        var rel = explicitExternalLinks[i].getAttribute('rel') || ''
+        if (rel.indexOf('noopener') === -1) rel += ' noopener'
+        if (rel.indexOf('noreferrer') === -1) rel += ' noreferrer'
+        explicitExternalLinks[i].setAttribute('rel', rel.trim())
     }
-}());
+}())
 </script>
-<script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>
+<script src="{{ "/js/pageContent.js" | prepend: site.baseurl }}" charset="utf-8"></script>

@@ -6,58 +6,40 @@ icon: tags
 type: page
 ---
 
-<div class="page clearfix">
+<div class="page">
     <div class="left">
-        <h1>{{page.title}}</h1>
+        <h1>{{ page.title }}</h1>
         <hr>
-        {% capture tags %}
-          {% for tag in site.tags %}
-            {{ tag[0] }}
-          {% endfor %}
-        {% endcapture %}
-        {% assign sortedtags = tags | split:' ' | sort %}
-
-        <ul>
+        {% capture tags %}{% for tag in site.tags %}{{ tag[0] }} {% endfor %}{% endcapture %}
+        {% assign sortedtags = tags | split: ' ' | sort %}
         {% for tag in sortedtags %}
-          <h2 id="{{ tag }}">{{ tag }}</h2>
-          {% for post in site.tags[tag] %}
-            <li>
-                <time>
-                {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
-                </time>
-                <a class="title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-
-                {% include category.html %}
-                {% include tag.html %}
-            </li>
-          {% endfor %}
-        {% endfor %}
-        </ul>
-
-    </div>
-    <button class="anchor"><i class="fa fa-anchor"></i></button>
-    <div class="right">
-        <div class="wrap">
-
-            <!-- Content -->
-            <div class="side content">
-                <div>
-                    Content
-                </div>
-                <ul id="content-side" class="content-ul">
-                    {% for tag in sortedtags %}
+            {% unless tag == '' %}
+            <section aria-labelledby="{{ tag }}">
+                <h2 id="{{ tag }}">{{ tag }}</h2>
+                <ul>
+                    {% for post in site.tags[tag] %}
                     <li>
-                        <a data-scroll href="#{{ tag }}">
-                            {{ tag }} ({{ site.tags[tag].size }})
-                        </a>
+                        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%F" }}</time>
+                        <a class="title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                        {% include category.html %}{% include tag.html %}
                     </li>
                     {% endfor %}
+                </ul>
+            </section>
+            {% endunless %}
+        {% endfor %}
+    </div>
 
+    <button class="anchor" type="button" aria-controls="content-panel" aria-expanded="false" aria-label="打开标签目录"><i class="fa fa-list" aria-hidden="true"></i><span class="visually-hidden">目录</span></button>
+    <aside id="content-panel" class="right" aria-label="标签目录">
+        <div class="wrap">
+            <div class="side content">
+                <div><i class="fa fa-th-list" aria-hidden="true"></i> 标签</div>
+                <ul id="content-side" class="content-ul">
+                    {% for tag in sortedtags %}{% unless tag == '' %}<li><a href="#{{ tag }}">{{ tag }} ({{ site.tags[tag].size }})</a></li>{% endunless %}{% endfor %}
                 </ul>
             </div>
-            <!-- 其他div框放到这里 -->
-            <!-- <div class="side">bbbb</div> -->
         </div>
-    </div>
+    </aside>
 </div>
-<script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>
+<script src="{{ "/js/pageContent.js" | prepend: site.baseurl }}" charset="utf-8"></script>

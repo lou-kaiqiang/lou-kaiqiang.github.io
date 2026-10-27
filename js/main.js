@@ -1,57 +1,53 @@
 /**
- * some JavaScript code for this blog theme
- */
-/* jshint asi:true */
-
-/////////////////////////header////////////////////////////
-/**
- * clickMenu
+ * Progressive enhancement for the shared navigation and back-to-top control.
  */
 (function() {
-  if (window.innerWidth <= 770) {
-    var menuBtn = document.querySelector('#headerMenu')
-    var nav = document.querySelector('#headerNav')
-    menuBtn.onclick = function(e) {
-      e.stopPropagation()
-      if (menuBtn.classList.contains('active')) {
-        menuBtn.classList.remove('active')
-        nav.classList.remove('nav-show')
-      } else {
-        nav.classList.add('nav-show')
-        menuBtn.classList.add('active')
-      }
-    }
-    document.querySelector('body').addEventListener('click', function() {
-      nav.classList.remove('nav-show')
-      menuBtn.classList.remove('active')
-    })
+  document.documentElement.classList.add('js')
+  var menuBtn = document.querySelector('#headerMenu')
+  var nav = document.querySelector('#headerNav')
+  var mobileBreakpoint = 770
+
+  if (!menuBtn || !nav) return
+
+  function setMenu(open, restoreFocus) {
+    menuBtn.classList.toggle('active', open)
+    nav.classList.toggle('nav-show', open)
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false')
+    menuBtn.setAttribute('aria-label', open ? '关闭导航菜单' : '打开导航菜单')
+    if (restoreFocus) menuBtn.focus()
   }
-}());
 
-//////////////////////////back to top////////////////////////////
-(function() {
-  var backToTop = document.querySelector('.back-to-top')
-  var backToTopA = document.querySelector('.back-to-top a')
-  // console.log(backToTop);
-  window.addEventListener('scroll', function() {
-
-    // 页面顶部滚进去的距离
-    var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-
-    if (scrollTop > 200) {
-      backToTop.classList.add('back-to-top-show')
-    } else {
-      backToTop.classList.remove('back-to-top-show')
-    }
+  menuBtn.addEventListener('click', function(event) {
+    event.stopPropagation()
+    setMenu(menuBtn.getAttribute('aria-expanded') !== 'true', false)
   })
 
-  // backToTopA.addEventListener('click',function (e) {
-  //     e.preventDefault()
-  //     window.scrollTo(0,0)
-  // })
-}());
+  nav.addEventListener('click', function(event) {
+    if (event.target.closest && event.target.closest('a')) setMenu(false, false)
+  })
 
-//////////////////////////hover on demo//////////////////////////////
+  document.addEventListener('click', function(event) {
+    if (!nav.contains(event.target) && event.target !== menuBtn) setMenu(false, false)
+  })
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') setMenu(false, true)
+  })
+
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > mobileBreakpoint) setMenu(false, false)
+  })
+}())
+
 (function() {
-  var demoItems = document.querySelectorAll('.grid-item')
-}());
+  var backToTop = document.querySelector('.back-to-top')
+  if (!backToTop) return
+
+  function updateVisibility() {
+    var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    backToTop.classList.toggle('back-to-top-show', scrollTop > 200)
+  }
+
+  window.addEventListener('scroll', updateVisibility, { passive: true })
+  updateVisibility()
+}())
