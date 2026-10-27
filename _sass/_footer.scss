@@ -1,63 +1,88 @@
 .site-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
+    flex: 0 0 auto;
+    margin-top: auto;
+    color: $footer-text;
     text-align: center;
-    // margin-top: 50px;
-    background-color: #2b2b3c;
-    box-shadow: 0 -2px 4px 1px rgba(0,0,0,0.5);
-    color: #bbb;
+    background: $footer-bg;
+    box-shadow: 0 -2px 4px 1px rgba(0, 0, 0, 0.25);
+
     .wrapper {
-        width: 1140px;
+        width: $content-width;
+        max-width: calc(100% - #{$space-7});
         margin: 0 auto;
-        padding: 15px 0;
-        text-align: center;
+        padding: $space-5 0;
         font-size: 14px;
+
         p {
-            margin: 0;
+            margin: 0 0 $space-2;
             line-height: 1.6;
         }
-        .contact {
+
+        .description {
             display: inline-block;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: $space-2 $space-4;
+            margin: 0 0 $space-3;
+
             a {
-                color: #ccc;
-                transition: 0.3s ease;
+                color: $footer-text;
+
                 &:hover {
-                    color: #fff;
+                    color: $surface-strong;
                 }
+            }
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: $space-2;
+
+            a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 44px;
+                min-height: 44px;
+                padding: 0 $space-2;
+                color: $footer-text;
+                border-radius: $radius;
+
+                &:hover {
+                    color: $surface-strong;
+                    background: rgba(255, 255, 255, 0.1);
+                }
+
                 i {
                     margin: 0 5px;
                     font-size: 20px;
                 }
             }
         }
-        .description {
-            display: inline-block;
-        }
+
         .power {
+            margin-bottom: 0;
+
             a {
-                color: #8F90C5;
-                transition: 0.3s ease;
+                color: #b9c3ee;
+
                 &:hover {
-                    color: #fff;
+                    color: $surface-strong;
                 }
             }
         }
     }
 }
-@media screen and (max-width:1200px) and (min-width: 770px) {
-    .site-footer {
-        .wrapper {
-            width: 90%;
-        }
-    }
-}
-@media screen and (max-width: 770px) {
-    .site-footer {
-        .wrapper {
-            width: 90%;
-        }
+
+@media screen and (max-width: $wide-breakpoint) {
+    .site-footer .wrapper {
+        width: 90%;
+        max-width: none;
     }
 }

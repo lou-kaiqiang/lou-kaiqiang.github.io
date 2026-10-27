@@ -2,27 +2,21 @@
 layout: default
 ---
 
-<div class="page clearfix" post>
+<div class="page">
     <div class="left">
-        <h1>{{page.title}}</h1>
-        <hr>
-        {{content}}
+        {{ content }}
     </div>
-    <button class="anchor"><i class="fa fa-anchor"></i></button>
-    <div class="right">
-        <div class="wrap">
 
-            <!-- Content -->
+    <button class="anchor" type="button" aria-controls="content-panel" aria-expanded="false" aria-label="打开页面目录">
+        <i class="fa fa-list" aria-hidden="true"></i><span class="visually-hidden">目录</span>
+    </button>
+    <aside id="content-panel" class="right" aria-label="页面目录">
+        <div class="wrap">
             <div class="side content">
-                <div>
-                    Content
-                </div>
-                <ul id="content-side" class="content-ul">
-                </ul>
+                <div><i class="fa fa-th-list" aria-hidden="true"></i> 目录</div>
+                <ul id="content-side" class="content-ul"></ul>
             </div>
-            <!-- 其他div框放到这里 -->
-            <!-- <div class="side">bbbb</div> -->
         </div>
-    </div>
+    </aside>
 </div>
-<script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>
+<script src="{{ "/js/pageContent.js" | prepend: site.baseurl }}" charset="utf-8"></script>

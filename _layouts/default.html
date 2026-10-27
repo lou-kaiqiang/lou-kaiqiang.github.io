@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
   {% include head.html %}
 
   <body>
-
+    <a class="skip-link" href="#main-content">跳转到主要内容</a>
     {% include header.html %}
 
-        {{ content }}
+    <main id="main-content" tabindex="-1">
+      {{ content }}
+    </main>
 
     {% include footer.html %}
     {% include backToTop.html %}
-    <script src="{{ " /js/main.js " | prepend: site.baseurl }}" charset="utf-8"></script>
-    <script src="{{ " /js/smooth-scroll.min.js " | prepend: site.baseurl }}" charset="utf-8"></script>
-    <script type="text/javascript">
-      smoothScroll.init({
-        speed: 500, // Integer. How fast to complete the scroll in milliseconds
-        easing: 'easeInOutCubic', // Easing pattern to use
-        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
-      });
+    <script src="{{ "/js/main.js" | prepend: site.baseurl }}" charset="utf-8"></script>
+    <script src="{{ "/js/smooth-scroll.min.js" | prepend: site.baseurl }}" charset="utf-8"></script>
+    <script>
+      if (window.smoothScroll) {
+        smoothScroll.init({
+          speed: 500,
+          easing: 'easeInOutCubic',
+          offset: 20
+        });
+      }
     </script>
-    <!-- <script src="{{ " /js/scroll.min.js " | prepend: site.baseurl }}" charset="utf-8"></script> -->
   </body>
 
 </html>
