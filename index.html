@@ -35,7 +35,13 @@ layout: default
                             {% endunless %}
                         {% endfor %}
                     </div>
-                    <div class="excerpt">{{ post.excerpt }}</div>
+                    <div class="excerpt">
+                        {% if post.description %}
+                            {{ post.description | escape }}
+                        {% else %}
+                            {{ post.excerpt }}
+                        {% endif %}
+                    </div>
                     <div class="read-all"><a href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> 阅读全文<span class="visually-hidden">：{{ post.title }}</span></a></div>
                 </article>
             </li>
