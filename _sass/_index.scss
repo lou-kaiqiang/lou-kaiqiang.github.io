@@ -38,7 +38,26 @@
                 border-bottom: 1px solid $border-color;
             }
 
+            > .pinned-post {
+                margin-bottom: $space-4;
+                padding: $space-5;
+                background: #f7f9fc;
+                border: 1px solid $border-strong;
+                border-radius: $radius;
+            }
+
             li {
+                .pinned-label {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: $space-1;
+                    margin-bottom: $space-2;
+                    color: $link-hover;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: .04em;
+                }
+
                 h2 {
                     margin: 0 0 $space-3;
                     border: 0;
@@ -221,6 +240,10 @@
 
 @media screen and (max-width: $mobile-breakpoint) {
     .page[index] .left {
+        > ul > .pinned-post {
+            padding: $space-4;
+        }
+
         > ul li h2 {
             font-size: 23px;
         }
