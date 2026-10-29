@@ -30,6 +30,9 @@ def read_front_matter(content):
         data[key.strip()] = value.strip().strip("\"'")
     return data
 
+def is_truthy(value):
+    return value.strip().lower() in {"true", "yes", "1", "on"}
+
 def slugify(value):
     value = value.strip()
     value = re.sub(r"[^\w\u4e00-\u9fff+.'-]+", "-", value, flags=re.UNICODE)
@@ -67,11 +70,13 @@ def parse_post(filename, filepath):
 
     date = post_date(front_matter, date)
     url = post_url(date, slug)
+    pinned = is_truthy(front_matter.get("pinned", ""))
 
-    return date, title, category, url
+    return date, title, category, url, pinned
 
 def main():
     categories = defaultdict(list)
+    pinned_posts = []
 
     for root, _, files in os.walk(POSTS_DIR):
         for f in files:
@@ -79,11 +84,25 @@ def main():
                 filepath = Path(root) / f
                 parsed = parse_post(f, filepath)
                 if parsed:
-                    date, title, category, url = parsed
-                    categories[category].append((date, title, url))
+                    date, title, category, url, pinned = parsed
+                    post = (date, title, url)
+                    if pinned:
+                        pinned_posts.append(post)
+                    else:
+                        categories[category].append(post)
 
     with open(README_FILE, "w", encoding="utf-8") as f:
         f.write("# 📚 博客文章目录\n\n")
+
+        if pinned_posts:
+            f.write("## 📌 置顶文章\n\n")
+            f.write("| 日期 | 标题 |\n")
+            f.write("|------|------|\n")
+
+            for date, title, url in sorted(pinned_posts, reverse=True):
+                f.write(f"| {date} | [{title}]({url}) |\n")
+
+            f.write("\n")
 
         for cat in sorted(categories.keys()):
             f.write(f"## {cat}\n\n")
